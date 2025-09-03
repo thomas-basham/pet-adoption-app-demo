@@ -14,6 +14,8 @@ A web application that lets users manage a pet adoption facility. Made with Reac
 
 ### Minimum properties of pet object
 
+**Table Name:** Pet
+
 `{
     id: String,  name: string, age: number, isAdopted: boolean
   }`
