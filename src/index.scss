@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+
+$celadon: hsla(124, 72%, 82%, 1);
+$celeste: hsla(170, 68%, 84%, 1);
+$columbia-blue: hsla(209, 68%, 84%, 1);
+$orchid-pink: hsla(344, 68%, 84%, 1);
+$dutch-white: hsla(43, 68%, 84%, 1);
+
+body {
+  background-color: $columbia-blue;
+}
+
+main {
+  width: 70vw;
+  margin: 0 auto;
+}
+
+h1,
+h2 {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  button {
+    background-color: $orchid-pink;
+    padding: 0.5rem;
+    border-color: $dutch-white;
+    border-radius: 5px;
+  }
+
+  input {
+    background-color: $orchid-pink;
+    padding: 0.5rem;
+    border-color: $dutch-white;
+    border-radius: 5px;
+  }
+
+  button:hover {
+    background-color: darken($orchid-pink, 10%);
+    cursor: pointer;
+  }
+}
+
+.pet-div {
+  display: flex;
+  margin-block: 1rem;
+  p {
+    background-color: $celeste;
+    padding: 0.5rem;
+  }
+
+  div {
+    border: solid 8px $orchid-pink;
+    border-radius: 12px;
+    padding: 1rem;
+  }
+}

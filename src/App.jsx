@@ -23,7 +23,7 @@ function App() {
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: 400,
-    bgcolor: "background.paper",
+    bgcolor: "hsla(209, 68%, 84%, 1)",
     border: "2px solid #000",
     boxShadow: 24,
     p: 4,
@@ -106,8 +106,10 @@ function App() {
           <label htmlFor="age">Age</label>
           <input type="number" name="age" id="age" />
           <br />
-          <label htmlFor="isAdopted">Adopted</label>
-          <input type="checkbox" name="isAdopted" id="isAdopted" />
+          <div>
+            <label htmlFor="isAdopted">Adopted</label>
+            <input type="checkbox" name="isAdopted" id="isAdopted" />
+          </div>
           <br />
           <button type="submit">Add Pet</button>
         </form>
@@ -121,14 +123,19 @@ function App() {
               {pets &&
                 pets.map((petObject, index) => {
                   return (
-                    <div key={index}>
-                      <p>{petObject.name}</p>
-                      <p>{petObject.age}</p>
-                      <p>{petObject.isAdopted ? "Adopted" : "Needs a Home"}</p>
+                    <div className="pet-div" key={index}>
+                      <div>
+                        <p>{petObject.name}</p>
+                        <p>{petObject.age}</p>
+                        <p>
+                          {petObject.isAdopted ? "Adopted" : "Needs a Home"}
+                        </p>
+                      </div>
                       <Button onClick={() => handleOpen(petObject)}>
                         Update Pet Information
                       </Button>
                       <Button
+                        color="error"
                         onClick={() =>
                           handleDeletePet(petObject.id, petObject.name)
                         }
@@ -147,11 +154,10 @@ function App() {
             aria-describedby="modal-modal-description"
           >
             <Box sx={style}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                Text in a modal
+              <Typography id="modal-modal-title" variant="h4" component="h4">
+                Pet Intake Form
               </Typography>
               <form onSubmit={(event) => handleUpdatePet(event)}>
-                <h2>Pet Intake Form</h2>
                 <label htmlFor="petName">Name</label>
                 <input
                   value={petToUpdate.name}
@@ -185,23 +191,26 @@ function App() {
                   id="age"
                 />
                 <br />
-                <label htmlFor="isAdopted">Adopted</label>
-                <input
-                  onChange={(event) =>
-                    setPetToUpdate({
-                      id: petToUpdate.id,
-                      name: petToUpdate.name,
-                      age: petToUpdate.age,
-                      isAdopted: event.target.checked,
-                    })
-                  }
-                  checked={petToUpdate.isAdopted}
-                  type="checkbox"
-                  name="isAdopted"
-                  id="isAdopted"
-                />
+
+                <div>
+                  <label htmlFor="isAdopted">Adopted</label>
+                  <input
+                    onChange={(event) =>
+                      setPetToUpdate({
+                        id: petToUpdate.id,
+                        name: petToUpdate.name,
+                        age: petToUpdate.age,
+                        isAdopted: event.target.checked,
+                      })
+                    }
+                    checked={petToUpdate.isAdopted}
+                    type="checkbox"
+                    name="isAdopted"
+                    id="isAdopted"
+                  />
+                </div>
                 <br />
-                <button type="submit">Add Pet</button>
+                <button type="submit">Update Pet</button>
               </form>
             </Box>
           </Modal>
